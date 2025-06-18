@@ -1,0 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/18 07:28:27 by yfradj            #+#    #+#             */
+/*   Updated: 2025/06/18 07:30:27 by yfradj           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <fcntl.h>
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+
+#endif
