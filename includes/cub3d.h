@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 07:28:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/18 07:30:27 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/18 09:59:01 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 # define CUB3D_H
 
 # include "../libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+typedef struct s_data
+{
+	char	**map;
+}			t_data;
+
+/*parsing*/
+int			map_ok(char *file_map);
 
 #endif

@@ -6,12 +6,12 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/14 17:53:58 by yfradj            #+#    #+#              #
-#    Updated: 2024/12/14 17:57:29 by yfradj           ###   ########.fr        #
+#    Updated: 2025/06/19 00:50:24 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 NAME = libft.a
 
 SRCS = \
