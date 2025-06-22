@@ -6,7 +6,7 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 07:23:33 by yfradj            #+#    #+#              #
-#    Updated: 2025/06/19 00:49:43 by yfradj           ###   ########.fr        #
+#    Updated: 2025/06/19 13:49:05 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,13 @@ FLAGS = -Wall -Werror -Wextra -lXext -lX11 -lm -lz
 FLAGS_TMP = -g3 -lXext -lX11 -lm -lz
 
 WAY = srcs/
+WAY2 = srcs/parsing
 
 LIB_USE = libft/libft.a
 
 SRCS = \
 	$(WAY)main.c \
-	$(WAY)parsing.c \
+	$(WAY2)parsing.c \
 
 OBJS = $(SRCS:.c=.o)
 	
