@@ -6,7 +6,22 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:49:48 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/19 13:49:49 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/23 12:55:56 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/cub3d.h"
+
+void	print_tab(char **tab)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (tab[i])
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+}

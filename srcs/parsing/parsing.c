@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 08:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/19 13:48:44 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/23 13:01:09 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,29 @@ int	cub_file(char *name)
 		return (1);
 	if (name[i] != '.' || name[i + 1] != 'c' || name[i + 2] != 'u' || name[i
 			+ 3] != 'b')
-		return (1);
-	return (0);
+		return (0);
+	return (1);
+}
+
+int	split_info_map(char *buffer, t_data *data)
+{
+	char	**maps;
+	
+	maps = ft_split(buffer, '\n');
+	if (!maps)
+		return (0);
+	free(buffer);
+	print_tab(maps);
+	data->map = maps;
+	return (1);
 }
 
 /* vérifie si la map donne est bonne */
-int	map_ok(char *file_map)
+int	map_ok(char *file_map, t_data *data)
 {
 	int		fd;
 	char	*buffer;
-	char	**map;
+	char	**maps;
 
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
@@ -66,9 +79,10 @@ int	map_ok(char *file_map)
 	if (!cub_file(file_map))
 		return (0);
 	buffer = get_map_gnl(fd);
-	printf("%s", buffer);
-	// map = ft_split(buffer, '\n');
-	// if (!check(map))
-	// 	return (0);
+	// printf("%s", buffer);
+	if (!split_info_map(buffer, data))
+		return (0);
+	// if (!check(maps))
+		// return (0);
 	return (1);
 }

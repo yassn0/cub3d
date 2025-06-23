@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 07:28:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/18 09:59:01 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/23 12:56:25 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_data
 }			t_data;
 
 /*parsing*/
-int			map_ok(char *file_map);
+int	map_ok(char *file_map, t_data *data);
+
+/*debug*/
+void	print_tab(char **tab);
 
 #endif
