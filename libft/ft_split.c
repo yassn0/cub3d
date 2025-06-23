@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 14:31:29 by yfradj            #+#    #+#             */
-/*   Updated: 2024/12/10 11:31:35 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/23 15:55:22 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	nb_mot(const char *str, char c)
 	i = 0;
 	boul = 0;
 	count = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] != c && boul == 0)
 		{

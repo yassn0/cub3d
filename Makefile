@@ -6,7 +6,7 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 07:23:33 by yfradj            #+#    #+#              #
-#    Updated: 2025/06/23 12:58:16 by yfradj           ###   ########.fr        #
+#    Updated: 2025/06/23 16:38:26 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra -lXext -lX11 -lm -lz
 
-FLAGS_TMP = -g3 -lXext -lX11 -lm -lz
+FLAGS_TMP = -Wall -g3 -lXext -lX11 -lm -lz
 
 WAY = srcs/
 WAY2 = srcs/parsing/
@@ -23,8 +23,10 @@ LIB_USE = libft/libft.a
 
 SRCS = \
 	$(WAY)main.c \
+	$(WAY)utils.c \
 	$(WAY)debug.c \
 	$(WAY2)parsing.c \
+	$(WAY2)check.c \
 
 OBJS = $(SRCS:.c=.o)
 	
