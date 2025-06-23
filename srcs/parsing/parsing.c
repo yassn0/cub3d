@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 08:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/23 17:19:03 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/24 00:51:44 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	split_info_map(char *buffer, t_data *data)
 		return (0);
 	if (maps[6])
 		data->map = &maps[6];
+	data->tmp_map = maps;
 	return (1);
 }
 
@@ -95,7 +96,6 @@ int	map_ok(char *file_map, t_data *data)
 	if (!cub_file(file_map))
 		return (0);
 	buffer = get_map_gnl(fd);
-	// printf("%s", buffer);
 	if (!split_info_map(buffer, data))
 		return (0);
 	if (!check(data))
