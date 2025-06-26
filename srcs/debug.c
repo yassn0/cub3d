@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/19 13:49:48 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/23 17:13:24 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/27 00:09:40 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	print_data(t_data *data)
 	printf("texture: %s\n", data->texture_S);
 	printf("texture: %s\n", data->texture_W);
 	printf("texture: %s\n", data->texture_E);
-	printf("color: %s\n", data->ground_color);
+	printf("color: %s\n", data->floor_color);
 	printf("color: %s\n", data->sky_color);
 	printf("orientation: %c\n", data->player_orientation);
 	printf("p_x: %d\n", data->p_x);

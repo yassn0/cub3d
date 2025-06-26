@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 07:28:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/24 01:07:28 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/27 00:04:53 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_data
 	char	*texture_S;
 	char	*texture_W;
 	char	*texture_E;
-	char	*ground_color;
+	char	*floor_color;
 	char	*sky_color;
 	char	player_orientation;
 	int		p_x;
@@ -44,10 +44,11 @@ typedef struct s_data
 int			map_ok(char *file_map, t_data *data);
 int			check(t_data *data);
 int			character_condition(t_data *data, int i, int j, int *count);
+int			get_textures_colors(t_data *data, char **maps);
 
 /*execution*/
-int	init_window(t_data *data);
-int	close_window_cross(t_data *data);
+int			init_window(t_data *data);
+int			close_window_cross(t_data *data);
 
 /*utils*/
 int			is_space(char c);

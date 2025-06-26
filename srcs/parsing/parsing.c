@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 08:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/24 00:51:44 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/06/27 00:39:05 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,11 @@ int	split_info_map(char *buffer, t_data *data)
 	if (!maps)
 		return (0);
 	free(buffer);
-	if (maps[0] && ft_strlen(maps[0]) > 3 && maps[1] && ft_strlen(maps[1]) > 3
-		&& maps[2] && ft_strlen(maps[2]) > 3 && maps[3]
-		&& ft_strlen(maps[3]) > 3 && maps[4] && ft_strlen(maps[4]) > 2
-		&& maps[5] && ft_strlen(maps[5]) > 2)
+	if (!get_textures_colors(data, maps))
 	{
-		data->texture_N = &maps[0][3];
-		data->texture_S = &maps[1][3];
-		data->texture_W = &maps[2][3];
-		data->texture_E = &maps[3][3];
-		data->ground_color = &maps[4][2];
-		data->sky_color = &maps[5][2];
-	}
-	else
+		data->tmp_map = maps;
 		return (0);
+	}
 	if (maps[6])
 		data->map = &maps[6];
 	data->tmp_map = maps;

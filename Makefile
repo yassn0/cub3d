@@ -6,7 +6,7 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 07:23:33 by yfradj            #+#    #+#              #
-#    Updated: 2025/06/24 01:07:57 by yfradj           ###   ########.fr        #
+#    Updated: 2025/06/27 00:08:24 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS = \
 	$(WAY)debug.c \
 	$(WAY2)parsing.c \
 	$(WAY2)check.c \
+	$(WAY2)get_data.c \
 
 OBJS = $(SRCS:.c=.o)
 	
