@@ -1,0 +1,203 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Patterns de développement cub3d
+
+## Patterns de gestion mémoire
+
+### Libération systématique
+Toujours utiliser `exit_free_error()` définie dans [main.c](mdc:srcs/main.c) pour les sorties d'erreur :
+```c
+void exit_free_error(char *str, t_data *data)
+{
+    if (data && data->tmp_map)
+        free_map(data->tmp_map);
+    printf("%s", str);
+    exit(1);
+}
+```
+
+### Initialisation des structures
+Suivre le pattern d'`init_struct()` dans [main.c](mdc:srcs/main.c) pour initialiser à NULL :
+```c
+void init_struct(t_data *data)
+{
+    data->texture_N = NULL;	
+    data->texture_S = NULL;	
+    // ... tous les pointeurs à NULL
+}
+```
+
+## Patterns de parsing
+
+### Architecture modulaire
+- **Parser principal** : [parsing.c](mdc:srcs/parsing/parsing.c) - `map_ok()` orchestre tout
+- **Extraction données** : [get_data.c](mdc:srcs/parsing/get_data.c) - `get_textures_colors()`
+- **Validation** : [check.c](mdc:srcs/parsing/check.c) - `check()` vérifie la cohérence
+
+### Gestion des fichiers .cub
+```c
+int map_ok(char *file_map, t_data *data)
+{
+    // 1. Vérifier extension .cub
+    // 2. Ouvrir fichier
+    // 3. Lire contenu avec get_next_line
+    // 4. Split et parse
+    // 5. Valider
+}
+```
+
+## Patterns d'erreur à implémenter
+
+Basé sur [info.txt](mdc:info.txt), implémenter ces validations :
+
+### Éléments requis manquants
+```c
+// Vérifier présence de : NO, SO, WE, EA, F, C, map
+int check_required_elements(t_data *data);
+```
+
+### Éléments dupliqués
+```c
+// Compter occurrences de chaque identifiant
+int check_duplicates(char **file_lines);
+```
+
+### Validation couleurs RGB
+```c
+// Format : R,G,B avec 0 <= valeurs <= 255
+int validate_color(char *color_str);
+```
+
+## Patterns MLX
+
+### Initialisation fenêtre
+```c
+int init_window(t_data *data)
+{
+    data->mlx = mlx_init();
+    if (!data->mlx)
+        return (0);
+    data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3D");
+    return (data->window != NULL);
+}
+```
+
+### Gestion événements
+```c
+mlx_hook(data.window, 17, 1, &close_window_cross, &data);  // Fermeture
+mlx_hook(data.window, 2, 1, &handle_keypress, &data);     // Clavier
+```
+
+## Patterns de debug
+
+### Affichage debug
+Utiliser les fonctions dans [debug.c](mdc:srcs/debug.c) :
+```c
+void print_data(t_data *data);  // Affiche toute la structure
+void print_tab(char **tab);     // Affiche un tableau 2D
+```
+
+### Debug conditionnel
+```c
+#ifdef DEBUG
+    print_data(data);
+#endif
+```
+
+## Patterns raycasting (à implémenter)
+
+### Structure ray
+```c
+typedef struct s_ray
+{
+    double  pos_x;      // Position joueur
+    double  pos_y;
+    double  dir_x;      // Direction regard
+    double  dir_y;
+    double  plane_x;    // Plan caméra
+    double  plane_y;
+    // ... autres données ray
+} t_ray;
+```
+
+### Boucle principale rendu
+```c
+int render_frame(t_data *data)
+{
+    // 1. Clear buffer
+    // 2. Cast rays pour chaque colonne
+    // 3. Calculer hauteur murs
+    // 4. Dessiner colonnes
+    // 5. mlx_put_image_to_window
+}
+```
+
+## Patterns de validation map
+
+### Caractères autorisés
+```c
+int valid_char(char c)
+{
+    return (c == '0' || c == '1' || c == 'N' || 
+            c == 'S' || c == 'E' || c == 'W' || 
+            c == ' ');
+}
+```
+
+### Map fermée
+```c
+int is_map_closed(char **map)
+{
+    // Vérifier que la map est entourée de murs '1'
+    // Checker première/dernière ligne
+    // Checker première/dernière colonne de chaque ligne
+}
+```
+
+### Position joueur unique
+```c
+int check_player_position(t_data *data)
+{
+    // Un seul caractère N/S/E/W dans la map
+    // Stocker position dans data->p_x, data->p_y
+    // Stocker orientation dans data->player_orientation
+}
+```
+
+## Patterns de nettoyage
+
+### Destruction complète
+```c
+void destroy_all(t_data data)
+{
+    if (data.window)
+        mlx_destroy_window(data.mlx, data.window);
+    if (data.mlx)
+        mlx_destroy_display(data.mlx);
+    // Libérer textures, images, etc.
+}
+```
+
+### Nettoyage partiel
+Utiliser `free_map()` définie dans [free.c](mdc:srcs/free.c) pour les tableaux 2D.
+
+## Standards 42 à respecter
+
+### Norminette
+- Pas plus de 25 lignes par fonction
+- Pas plus de 80 colonnes
+- Pas plus de 5 fonctions par fichier
+- Variables déclarées en début de fonction
+
+### Gestion d'erreurs obligatoire
+- Vérifier tous les retours malloc/open/mlx_init
+- Pas de fuites mémoire (valgrind clean)
+- Messages d'erreur commençant par "Error\n"
+
+### Architecture modulaire
+- Un fichier par module fonctionnel
+- Headers protégés (#ifndef/#define/#endif)
+- Prototypes dans header principal [cub3d.h](mdc:includes/cub3d.h)

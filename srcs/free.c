@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 00:46:05 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/24 01:00:23 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/02 15:38:44 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ void	free_map(char **map)
 
 void	destroy_all(t_data data)
 {
+	free_textures(&data);
+	if (data.img)
+		mlx_destroy_image(data.mlx, data.img);
 	mlx_destroy_display(data.mlx);
 	free(data.mlx);
 }

@@ -6,7 +6,7 @@
 #    By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 07:23:33 by yfradj            #+#    #+#              #
-#    Updated: 2025/06/27 00:08:24 by yfradj           ###   ########.fr        #
+#    Updated: 2025/07/02 15:38:27 by yfradj           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,11 @@ SRCS = \
 	$(WAY2)parsing.c \
 	$(WAY2)check.c \
 	$(WAY2)get_data.c \
+	$(WAY3)init.c \
+	$(WAY3)raycasting.c \
+	$(WAY3)render.c \
+	$(WAY3)player.c \
+	$(WAY3)texture.c \
 
 OBJS = $(SRCS:.c=.o)
 	

@@ -1,0 +1,98 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Projet cub3d - 42 School
+
+## Vue d'ensemble du projet
+Ce projet implémente un moteur de raycasting 3D en C, inspiré du jeu Wolfenstein 3D. Il fait partie du cursus 42 School.
+
+## Structure du projet
+
+### Fichiers principaux
+- [main.c](mdc:srcs/main.c) - Point d'entrée principal du programme
+- [cub3d.h](mdc:includes/cub3d.h) - Header principal avec structures et prototypes
+- [Makefile](mdc:Makefile) - Compilation du projet avec libft et mlx_linux
+
+### Modules organisés par fonctionnalités
+
+#### Parsing (`srcs/parsing/`)
+- [parsing.c](mdc:srcs/parsing/parsing.c) - Parser principal pour fichiers .cub
+- [get_data.c](mdc:srcs/parsing/get_data.c) - Extraction des textures et couleurs
+- [check.c](mdc:srcs/parsing/check.c) - Validation de la map et des données
+
+#### Utilitaires (`srcs/`)
+- [utils.c](mdc:srcs/utils.c) - Fonctions utilitaires générales
+- [free.c](mdc:srcs/free.c) - Gestion de la libération mémoire
+- [debug.c](mdc:srcs/debug.c) - Fonctions de debug et affichage
+- [windows.c](mdc:srcs/windows.c) - Gestion des fenêtres MLX
+
+#### Raycasting (`srcs/raycasting/`)
+- Module en développement pour le moteur de raycasting
+
+## Structure de données principale
+
+La structure `t_data` dans [cub3d.h](mdc:includes/cub3d.h) contient :
+- **Textures** : `texture_N`, `texture_S`, `texture_E`, `texture_W`
+- **Couleurs** : `floor_color`, `sky_color` 
+- **Map** : `map` (finale), `tmp_map` (temporaire pour parsing)
+- **Joueur** : `player_orientation`, `p_x`, `p_y`
+- **MLX** : `mlx`, `window`
+
+## Conventions de codage 42
+
+### Style obligatoire
+- Headers avec copyright 42 dans tous les fichiers
+- Norme 42 stricte : pas plus de 25 lignes par fonction, 80 colonnes max
+- Tabs pour l'indentation, pas d'espaces
+- Noms de variables en snake_case
+- Structures préfixées par `s_`, types par `t_`
+
+### Gestion d'erreurs
+- Toujours utiliser `exit_free_error()` pour les erreurs avec nettoyage
+- Libérer la mémoire avant chaque sortie
+- Vérifier tous les retours de malloc/open/etc.
+
+### Organisation du code
+- Une fonction par fonctionnalité
+- Prototypes dans le header principal
+- Séparation claire entre parsing, execution et utils
+
+## État actuel du développement
+
+### Terminé
+- Structure de base du projet
+- Parsing partiel des fichiers .cub
+- Gestion de base des erreurs
+- Infrastructure MLX
+
+### En cours ([info.txt](mdc:info.txt))
+- Parsing incomplet (ordre des textures/couleurs non géré)
+- Validation des erreurs à améliorer :
+  - Éléments manquants (R, NO, SO, S...)
+  - Doublons (deux R, deux NO...)
+  - Couleurs F/C : chiffres manquants/en trop, virgules, valeurs > 255
+
+### À faire
+- Module raycasting complet
+- Rendu 3D avec MLX
+- Gestion des contrôles clavier
+- Optimisations performance
+
+## Dépendances externes
+- **libft** : Bibliothèque personnelle 42 dans `libft/`
+- **mlx_linux** : Bibliothèque graphique MLX pour Linux dans `mlx_linux/`
+
+## Commandes de développement
+```bash
+make          # Compilation normale
+make clean    # Nettoyage objets
+make fclean   # Nettoyage complet
+make re       # Recompilation complète
+```
+
+## Notes importantes
+- Le projet utilise des flags de debug temporaires dans le Makefile
+- Les fonctions MLX sont commentées dans main.c pendant le développement
+- Le parsing n'est pas terminé et nécessite des améliorations importantes
