@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 01:00:00 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:37:07 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/02 16:52:13 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static void	handle_movement_keys(int keycode, t_data *data)
 
 static void	handle_rotation_keys(int keycode, t_data *data)
 {
-	if (keycode == XK_Left)
-		rotate_player(data, ROT_SPEED);
 	if (keycode == XK_Right)
+		rotate_player(data, ROT_SPEED);
+	if (keycode == XK_Left)
 		rotate_player(data, -ROT_SPEED);
 }
 

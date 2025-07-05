@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 08:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/27 00:39:05 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:45:05 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ int	cub_file(char *name)
 	i = i - 4;
 	if (i < 0)
 		return (1);
-	if (name[i] != '.' || name[i + 1] != 'c' || name[i + 2] != 'u' || name[i
-		+ 3] != 'b')
+	if (name[i] != '.' || name[i + 1] != 'c' || name[i
+			+ 2] != 'u' || name[i + 3] != 'b')
 		return (0);
 	return (1);
 }
 
-/*mets les donnees du fichier dans la structure
-a finir plus tard parce que ils peuvent etre mis dans un ordre different*/
 int	split_info_map(char *buffer, t_data *data)
 {
 	char	**maps;
@@ -74,12 +72,10 @@ int	split_info_map(char *buffer, t_data *data)
 	return (1);
 }
 
-/* vérifie si la map donne est bonne */
 int	map_ok(char *file_map, t_data *data)
 {
 	int		fd;
 	char	*buffer;
-	char	**maps;
 
 	fd = open(file_map, O_RDONLY);
 	if (fd == -1)
@@ -91,6 +87,5 @@ int	map_ok(char *file_map, t_data *data)
 		return (0);
 	if (!check(data))
 		return (0);
-	print_data(data);
 	return (1);
 }

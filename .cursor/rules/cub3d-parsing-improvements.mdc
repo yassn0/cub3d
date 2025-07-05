@@ -1,6 +1,6 @@
 ---
-description: 
-globs: 
+description:
+globs:
 alwaysApply: false
 ---
 # Améliorations parsing cub3d
@@ -47,8 +47,8 @@ int parse_identifiers(char **lines, t_data *data)
 ```c
 int check_required_elements(t_data *data)
 {
-    if (!data->texture_N || !data->texture_S || 
-        !data->texture_E || !data->texture_W)
+    if (!data->texture_n || !data->texture_s || 
+        !data->texture_e || !data->texture_w)
     {
         printf("Error\nMissing texture identifier\n");
         return (0);
@@ -312,3 +312,4 @@ void print_parsing_error(int error_type)
 ## Intégration dans le workflow existant
 
 Ces améliorations s'intègrent dans l'architecture existante de [get_data.c](mdc:srcs/parsing/get_data.c) et [check.c](mdc:srcs/parsing/check.c) sans casser le code existant.
+

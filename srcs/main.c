@@ -6,11 +6,18 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 07:33:05 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:43:07 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:51:01 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	is_space(char c)
+{
+	if (c && (c == ' '))
+		return (1);
+	return (0);
+}
 
 void	exit_free_error(char *str, t_data *data)
 {
@@ -22,21 +29,20 @@ void	exit_free_error(char *str, t_data *data)
 
 void	init_struct(t_data *data)
 {
-	data->texture_N = NULL;
-	data->texture_S = NULL;
-	data->texture_E = NULL;
-	data->texture_W = NULL;
+	data->texture_n = NULL;
+	data->texture_s = NULL;
+	data->texture_e = NULL;
+	data->texture_w = NULL;
 	data->floor_color = NULL;
 	data->sky_color = NULL;
 	data->tmp_map = NULL;
 	data->img = NULL;
 }
 
-int	main(int ac, char **av, char **env)
+int	main(int ac, char **av)
 {
 	t_data	data;
 
-	(void)env;
 	init_struct(&data);
 	if (ac != 2)
 		exit_free_error("Wrong number of arguments\n", NULL);

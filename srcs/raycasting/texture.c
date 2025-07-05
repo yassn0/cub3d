@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 01:00:00 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:43:48 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:36:58 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static int	load_single_texture(t_data *data, t_texture *tex, char *path)
 
 int	load_textures(t_data *data)
 {
-	if (!load_single_texture(data, &data->textures[0], data->texture_N))
+	if (!load_single_texture(data, &data->textures[0], data->texture_n))
 		return (0);
-	if (!load_single_texture(data, &data->textures[1], data->texture_S))
+	if (!load_single_texture(data, &data->textures[1], data->texture_s))
 		return (0);
-	if (!load_single_texture(data, &data->textures[2], data->texture_W))
+	if (!load_single_texture(data, &data->textures[2], data->texture_w))
 		return (0);
-	if (!load_single_texture(data, &data->textures[3], data->texture_E))
+	if (!load_single_texture(data, &data->textures[3], data->texture_e))
 		return (0);
 	return (1);
 }
@@ -50,7 +50,7 @@ int	get_texture_pixel(t_texture *tex, int x, int y)
 
 void	free_textures(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
