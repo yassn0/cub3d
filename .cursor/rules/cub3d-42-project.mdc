@@ -34,7 +34,7 @@ Ce projet implémente un moteur de raycasting 3D en C, inspiré du jeu Wolfenste
 ## Structure de données principale
 
 La structure `t_data` dans [cub3d.h](mdc:includes/cub3d.h) contient :
-- **Textures** : `texture_N`, `texture_S`, `texture_E`, `texture_W`
+- **Textures** : `texture_n`, `texture_s`, `texture_e`, `texture_w`
 - **Couleurs** : `floor_color`, `sky_color` 
 - **Map** : `map` (finale), `tmp_map` (temporaire pour parsing)
 - **Joueur** : `player_orientation`, `p_x`, `p_y`

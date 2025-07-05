@@ -6,26 +6,17 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 16:30:22 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:37:30 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 08:43:12 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	is_space(char c)
-{
-	if (c && (c == ' '))
-		return (1);
-	return (0);
-}
-
 int	height_map(char **tab)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	while (tab[i])
 		i++;
 	return (i);
@@ -35,7 +26,8 @@ int	character_condition(t_data *data, int i, int j, int *count)
 {
 	if (data->map[i][j] != '0' && data->map[i][j] != '1'
 		&& data->map[i][j] != 'N' && data->map[i][j] != 'S'
-		&& data->map[i][j] != 'E' && data->map[i][j] != 'W')
+		&& data->map[i][j] != 'E' && data->map[i][j] != 'W'
+		&& data->map[i][j] != ' ')
 		return (0);
 	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
 		|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
@@ -89,7 +81,7 @@ int	rgb_to_int(char *rgb_str)
 
 void	put_pixel(t_data *data, int x, int y, int color)
 {
-	char *pixel;
+	char	*pixel;
 
 	if (x < 0 || x >= WINDOW_WIDTH || y < 0 || y >= WINDOW_HEIGHT)
 		return ;

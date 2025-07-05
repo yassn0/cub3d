@@ -24,8 +24,8 @@ Suivre le pattern d'`init_struct()` dans [main.c](mdc:srcs/main.c) pour initiali
 ```c
 void init_struct(t_data *data)
 {
-    data->texture_N = NULL;	
-    data->texture_S = NULL;	
+    data->texture_n = NULL;	
+    data->texture_s = NULL;	
     // ... tous les pointeurs à NULL
 }
 ```

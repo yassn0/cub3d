@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 01:00:00 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:39:52 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:47:33 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	draw_wall_column(t_data *data, int x)
 	y = data->ray.draw_start;
 	while (y < data->ray.draw_end)
 	{
-		tex_y = (int)data->ray.tex_pos & (data->textures[data->ray.tex_num].height
-				- 1);
+		tex_y = (int)data->ray.tex_pos
+			& (data->textures[data->ray.tex_num].height - 1);
 		data->ray.tex_pos += data->ray.step;
 		color = get_texture_pixel(&data->textures[data->ray.tex_num],
 				data->ray.tex_x, tex_y);
@@ -96,7 +96,7 @@ static void	draw_floor_ceiling(t_data *data, int x)
 
 void	render_frame(t_data *data)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (x < WINDOW_WIDTH)

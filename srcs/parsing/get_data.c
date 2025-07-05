@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 23:49:31 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/27 00:40:16 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:49:14 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ static void	process_texture(char *line, int j, char **texture_ptr)
 static void	handle_element(t_data *data, char *line, int j)
 {
 	if (!ft_strncmp(&line[j], "NO ", 3))
-		process_texture(line, j + 3, &data->texture_N);
+		process_texture(line, j + 3, &data->texture_n);
 	else if (!ft_strncmp(&line[j], "SO ", 3))
-		process_texture(line, j + 3, &data->texture_S);
+		process_texture(line, j + 3, &data->texture_s);
 	else if (!ft_strncmp(&line[j], "WE ", 3))
-		process_texture(line, j + 3, &data->texture_W);
+		process_texture(line, j + 3, &data->texture_w);
 	else if (!ft_strncmp(&line[j], "EA ", 3))
-		process_texture(line, j + 3, &data->texture_E);
+		process_texture(line, j + 3, &data->texture_e);
 	else if (!ft_strncmp(&line[j], "F ", 2))
 		process_texture(line, j + 2, &data->floor_color);
 	else if (!ft_strncmp(&line[j], "C ", 2))
@@ -75,13 +75,13 @@ static int	check_element(t_data *data)
 		return (0);
 	if (!check_color(data->sky_color))
 		return (0);
-	if (!data->texture_N)
+	if (!data->texture_n)
 		return (0);
-	if (!data->texture_E)
+	if (!data->texture_e)
 		return (0);
-	if (!data->texture_W)
+	if (!data->texture_w)
 		return (0);
-	if (!data->texture_S)
+	if (!data->texture_s)
 		return (0);
 	return (1);
 }

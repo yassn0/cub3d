@@ -6,13 +6,12 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 15:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/06/27 00:06:45 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 08:44:39 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*fonction pour remplacer les espaces par des murs pour etre tranquille*/
 static int	replace_space(t_data *data)
 {
 	int	i;
@@ -35,7 +34,6 @@ static int	replace_space(t_data *data)
 
 static int	close_by_wall_side(t_data *data)
 {
-	int	len_max;
 	int	start;
 	int	i;
 	int	j;
@@ -105,16 +103,15 @@ static int	check_character(t_data *data)
 	return (1);
 }
 
-/*check si la map est valide*/
 int	check(t_data *data)
 {
-	if (!close_by_wall_side(data))
+	if (!check_character(data))
 		return (0);
 	if (!replace_space(data))
 		return (0);
-	if (!close_by_wall_topdown(data))
+	if (!close_by_wall_side(data))
 		return (0);
-	if (!check_character(data))
+	if (!close_by_wall_topdown(data))
 		return (0);
 	return (1);
 }
