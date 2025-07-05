@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 01:05:44 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 15:37:47 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:58:25 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	init_window(t_data *data)
 			"cub3d");
 	if (data->window == NULL)
 	{
-		free(data->window);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
 		return (0);
 	}
 	return (1);

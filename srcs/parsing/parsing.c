@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 08:36:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/05 07:45:05 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 08:44:15 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	cub_file(char *name)
 	i = i - 4;
 	if (i < 0)
 		return (1);
-	if (name[i] != '.' || name[i + 1] != 'c' || name[i
-			+ 2] != 'u' || name[i + 3] != 'b')
+	if (name[i] != '.' || name[i + 1] != 'c' || name[i + 2] != 'u' || name[i
+			+ 3] != 'b')
 		return (0);
 	return (1);
 }

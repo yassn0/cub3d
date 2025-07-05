@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 01:00:00 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/02 16:05:27 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 08:01:10 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,16 @@ int	init_raycasting(t_data *data)
 	data->floor_rgb = rgb_to_int(data->floor_color);
 	data->ceiling_rgb = rgb_to_int(data->sky_color);
 	if (!load_textures(data))
+	{
+		close_window_cross(data);
 		return (0);
+	}
 	data->img = mlx_new_image(data->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!data->img)
+	{
+		close_window_cross(data);
 		return (0);
+	}
 	data->img_data = mlx_get_data_addr(data->img, &data->img_bpp,
 			&data->img_size_line, &data->img_endian);
 	return (1);

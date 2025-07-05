@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 01:00:00 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/05 07:36:58 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 08:43:52 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,4 @@ int	get_texture_pixel(t_texture *tex, int x, int y)
 	pixel = tex->data + (y * tex->size_line + x * (tex->bpp / 8));
 	color = *(unsigned int *)pixel;
 	return (color);
-}
-
-void	free_textures(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < 4)
-	{
-		if (data->textures[i].img)
-			mlx_destroy_image(data->mlx, data->textures[i].img);
-		i++;
-	}
 }

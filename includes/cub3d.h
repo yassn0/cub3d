@@ -6,7 +6,7 @@
 /*   By: yfradj <yfradj@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 07:28:27 by yfradj            #+#    #+#             */
-/*   Updated: 2025/07/05 07:37:54 by yfradj           ###   ########.fr       */
+/*   Updated: 2025/07/05 07:59:28 by yfradj           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ void			draw_wall_column(t_data *data, int x);
 /*player*/
 void			init_player(t_data *data);
 int				handle_keypress(int keycode, t_data *data);
-int				handle_keyrelease(int keycode, t_data *data);
 void			move_player(t_data *data, double move_x, double move_y);
 void			rotate_player(t_data *data, double angle);
 
