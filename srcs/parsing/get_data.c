@@ -16,8 +16,10 @@ static void	process_texture(char *line, int j, char **texture_ptr)
 {
 	while (line[j] && is_space(line[j]))
 		j++;
-	if (line[j])
+	if (line[j] && line[j] != '\n' && line[j] != '\0')
 		*texture_ptr = &line[j];
+	else
+		*texture_ptr = NULL;
 }
 
 static void	handle_element(t_data *data, char *line, int j)
@@ -42,6 +44,8 @@ static int	check_color(char *color)
 	int		count;
 	char	**rgb;
 
+	if (!color)
+		return (0);
 	i = 0;
 	count = 0;
 	while (color[i])
