@@ -25,14 +25,23 @@ static int	load_single_texture(t_data *data, t_texture *tex, char *path)
 
 int	load_textures(t_data *data)
 {
+	int	i;
+
+	i = 0;
+	while (i < 4)
+	{
+		data->textures[i].img = NULL;
+		data->textures[i].data = NULL;
+		i++;
+	}
 	if (!load_single_texture(data, &data->textures[0], data->texture_n))
-		return (0);
+		return (printf("Error: Cannot load North texture\n"), 0);
 	if (!load_single_texture(data, &data->textures[1], data->texture_s))
-		return (0);
+		return (printf("Error: Cannot load South texture\n"), 0);
 	if (!load_single_texture(data, &data->textures[2], data->texture_w))
-		return (0);
+		return (printf("Error: Cannot load West texture\n"), 0);
 	if (!load_single_texture(data, &data->textures[3], data->texture_e))
-		return (0);
+		return (printf("Error: Cannot load East texture\n"), 0);
 	return (1);
 }
 
@@ -41,8 +50,10 @@ int	get_texture_pixel(t_texture *tex, int x, int y)
 	char	*pixel;
 	int		color;
 
+	if (!tex || !tex->data || !tex->img)
+		return (0x000000);
 	if (x < 0 || x >= tex->width || y < 0 || y >= tex->height)
-		return (0);
+		return (0x000000);
 	pixel = tex->data + (y * tex->size_line + x * (tex->bpp / 8));
 	color = *(unsigned int *)pixel;
 	return (color);

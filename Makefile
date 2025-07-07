@@ -39,7 +39,7 @@ SRCS = \
 
 OBJS = $(SRCS:.c=.o)
 	
-NAME = cub3d
+NAME = cub3D
 	
 
 all: $(NAME)
