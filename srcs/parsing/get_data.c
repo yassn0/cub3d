@@ -59,14 +59,11 @@ static int	check_color(char *color)
 	rgb = ft_split(color, ',');
 	if (!rgb)
 		return (0);
-	if (!rgb[0] || (ft_atoi(rgb[0]) < 0 || ft_atoi(rgb[0]) > 255))
+	if (!rgb[0] || !rgb[1] || !rgb[2] || ft_atoi(rgb[0]) < 0
+		|| ft_atoi(rgb[0]) > 255 || ft_atoi(rgb[1]) < 0 || ft_atoi(rgb[1]) > 255
+		|| ft_atoi(rgb[2]) < 0 || ft_atoi(rgb[2]) > 255)
 		return (free_map(rgb), 0);
-	if (!rgb[1] || (ft_atoi(rgb[1]) < 0 || ft_atoi(rgb[1]) > 255))
-		return (free_map(rgb), 0);
-	if (!rgb[2] || (ft_atoi(rgb[2]) < 0 || ft_atoi(rgb[2]) > 255))
-		return (free_map(rgb), 0);
-	free_map(rgb);
-	return (1);
+	return (free_map(rgb), 1);
 }
 
 static int	check_element(t_data *data)
