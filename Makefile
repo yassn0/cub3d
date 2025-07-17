@@ -14,8 +14,6 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra -lXext -lX11 -lm -lz
 
-FLAGS_TMP = -Wall -g3 -lXext -lX11 -lm -lz
-
 WAY = srcs/
 WAY2 = srcs/parsing/
 WAY3 = srcs/raycasting/
@@ -51,7 +49,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@make -C libft --no-print-directory
 	@make -C mlx_linux --no-print-directory
-	$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux $(FLAGS_TMP) $(LIB_USE) -o $(NAME)
+	$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux $(FLAGS) $(LIB_USE) -o $(NAME)
 	
 clean:
 	@make clean -C libft --no-print-directory
