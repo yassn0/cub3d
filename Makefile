@@ -10,9 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = gcc
 
-FLAGS = -Wall -Werror -Wextra -lXext -lX11 -lm -lz
+FLAGS = -g3 -Wall -Werror -Wextra -lXext -lX11 -lm -lz
 
 WAY = srcs/
 WAY2 = srcs/parsing/
@@ -42,7 +42,7 @@ NAME = cub3D
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx_linux -Wall -Werror -Wextra -c $< -o $@
+	$(CC) -I/usr/include -Imlx_linux -g3 -Wall -Werror -Wextra -c $< -o $@
 	
 $(NAME): $(OBJS)
 	@make -C libft --no-print-directory

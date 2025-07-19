@@ -59,13 +59,13 @@ int	split_info_map(char *buffer, t_data *data)
 
 	maps = ft_split(buffer, '\n');
 	if (!maps)
-		return (0);
+		return (free(buffer), 0);
 	free(buffer);
+	if (!maps[0])
+		return (free(maps), 0);
+	data->tmp_map = maps;
 	if (!get_textures_colors(data, maps))
-	{
-		data->tmp_map = maps;
 		return (0);
-	}
 	if (maps[6] && maps[6][0])
 		data->map = &maps[6];
 	else
