@@ -66,8 +66,10 @@ int	split_info_map(char *buffer, t_data *data)
 		data->tmp_map = maps;
 		return (0);
 	}
-	if (maps[6])
+	if (maps[6] && maps[6][0])
 		data->map = &maps[6];
+	else
+		data->map = NULL;
 	data->tmp_map = maps;
 	return (1);
 }
@@ -81,11 +83,11 @@ int	map_ok(char *file_map, t_data *data)
 	if (fd == -1)
 		return (0);
 	if (!cub_file(file_map))
-		return (0);
+		return (close(fd), 0);
 	buffer = get_map_gnl(fd);
 	if (!split_info_map(buffer, data))
-		return (0);
+		return (close(fd), 0);
 	if (!check(data))
-		return (0);
+		return (close(fd), 0);
 	return (1);
 }

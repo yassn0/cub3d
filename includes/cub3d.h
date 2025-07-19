@@ -140,8 +140,4 @@ void			free_map(char **map);
 void			destroy_all(t_data data);
 void			free_textures(t_data *data);
 
-/*debug*/
-void			print_tab(char **tab);
-void			print_data(t_data *data);
-
 #endif
