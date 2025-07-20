@@ -105,8 +105,13 @@ typedef struct s_data
 /*parsing*/
 int				map_ok(char *file_map, t_data *data);
 int				check(t_data *data);
+int				check_character(t_data *data);
+int				check_same_length(t_data *data);
 int				character_condition(t_data *data, int i, int j, int *count);
 int				get_textures_colors(t_data *data, char **maps);
+int				replace_space(t_data *data);
+int				close_by_wall_side(t_data *data);
+int				close_by_wall_topdown(t_data *data);
 
 /*execution*/
 int				init_window(t_data *data);

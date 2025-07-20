@@ -27,6 +27,7 @@ SRCS = \
 	$(WAY)free.c \
 	$(WAY2)parsing.c \
 	$(WAY2)check.c \
+	$(WAY2)check_utils.c \
 	$(WAY2)get_data.c \
 	$(WAY3)init.c \
 	$(WAY3)raycasting.c \
