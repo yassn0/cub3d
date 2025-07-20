@@ -1,1 +1,24 @@
-bugs avec la petite map ? 
+- bugs avec la petite map ? 
+
+- voici la fonction qui permet le wall sliding : 
+
+void	move_player(t_data *data, double move_x, double move_y)
+{
+    double	new_x = data->ray.pos_x + move_x;
+    double	new_y = data->ray.pos_y + move_y;
+    
+    // Vérification SÉPARÉE pour X
+    if (data->map[(int)data->ray.pos_y][(int)new_x] != '1')
+        data->ray.pos_x = new_x;
+        
+    // Vérification SÉPARÉE pour Y  
+    if (data->map[(int)new_y][(int)data->ray.pos_x] != '1')
+        data->ray.pos_y = new_y;
+}
+
+- segfault quand la texture n existe pas (corrigé)
+
+- pourquoi utiliser un angla à 66degres (0.66) dans l'init du raycasting : 
+----- largeur du plan de la camera le plus naturel, evite l'effet fisheye (trop large) ou tunnel vision (trop etroit)
+
+- on utilise une matrice de rotation 2D pour faire tourner le "personnage" dans le plan 
