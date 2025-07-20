@@ -12,7 +12,7 @@
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra -lXext -lX11 -lm -lz
+FLAGS = -g3 -Wall -Werror -Wextra -lXext -lX11 -lm -lz
 
 WAY = srcs/
 WAY2 = srcs/parsing/
@@ -25,7 +25,6 @@ SRCS = \
 	$(WAY)windows.c \
 	$(WAY)utils.c \
 	$(WAY)free.c \
-	$(WAY)debug.c \
 	$(WAY2)parsing.c \
 	$(WAY2)check.c \
 	$(WAY2)get_data.c \
@@ -43,8 +42,7 @@ NAME = cub3D
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -g -I/usr/include -Imlx_linux -c $< -o $@
-	# $(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) -I/usr/include -Imlx_linux -g3 -Wall -Werror -Wextra -c $< -o $@
 	
 $(NAME): $(OBJS)
 	@make -C libft --no-print-directory

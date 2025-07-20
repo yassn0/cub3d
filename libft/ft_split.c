@@ -84,8 +84,13 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	index = -1;
 	split = malloc((nb_mot(s, c) + 1) * sizeof(char *));
-	if (!s || !(split))
+	if (!(split))
 		return (0);
+	if (nb_mot(s, c) == 0)
+	{
+		split[0] = NULL;
+		return (split);
+	}
 	while (i <= ft_strlen((char *)s))
 	{
 		if (s[i] != c && index < 0)

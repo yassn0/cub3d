@@ -105,6 +105,8 @@ static int	check_character(t_data *data)
 
 int	check(t_data *data)
 {
+	if (!data->map)
+		return (0);
 	if (!check_character(data))
 		return (0);
 	if (!replace_space(data))
