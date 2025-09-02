@@ -67,44 +67,40 @@ static void	*free_tab(char **tab, int size)
 	return (NULL);
 }
 
-static char	**help_line(int j, char **split)
+static char	**ft_split_loop(char const *s, char c, char **split)
 {
-	split[j] = NULL;
-	return (split);
-}
+	int	i;
+	int	j;
+	int	index;
 
-char	**ft_split(char const *s, char c)
-{
-	int		i;
-	int		j;
-	int		index;
-	char	**split;
-
-	i = 0;
+	i = -1;
 	j = 0;
 	index = -1;
-	split = malloc((nb_mot(s, c) + 1) * sizeof(char *));
-	if (!(split))
-		return (0);
-	if (nb_mot(s, c) == 0)
-	{
-		split[0] = NULL;
-		return (split);
-	}
-	while (i <= ft_strlen((char *)s))
+	while (++i <= ft_strlen((char *)s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
 		else if ((s[i] == c || i == ft_strlen((char *)s)) && index >= 0)
 		{
-			split[j++] = ft_strdup_ind(s, index, i);
-			if (!(split[j - 1]))
+			split[j] = ft_strdup_ind(s, index, i);
+			if (!(split[j++]))
 				return (free_tab(split, j));
 			index = -1;
 		}
-		i++;
 	}
-	return (help_line(j, split));
+	return (split[j] = NULL, split);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+
+	split = malloc((nb_mot(s, c) + 1) * sizeof(char *));
+	if (!(split))
+		return (0);
+	if (nb_mot(s, c) == 0)
+		return (split[0] = NULL, split);
+	return (ft_split_loop(s, c, split));
 }
 
 // int	main(void)
